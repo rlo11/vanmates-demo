@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanmates - Concepto de Automatización</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .demo-note {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .demo-note .icon {
+            font-size: 2rem;
+        }
+
+        .process-flow {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .process-flow h2 {
+            color: #1f2937;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .system-box {
+            flex: 1;
+            min-width: 150px;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            position: relative;
+        }
+
+        .hubspot {
+            background: #ff7a59;
+        }
+
+        .automation {
+            background: #6366f1;
+            transform: scale(1.1);
+        }
+
+        .quickbooks {
+            background: #2ca01c;
+        }
+
+        .asana {
+            background: #f06a6a;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #6366f1;
+        }
+
+        .concept-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .concept-section h3 {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .concept-section h3 .badge {
+            background: #ddd6fe;
+            color: #6366f1;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: normal;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .feature-list li:before {
+            content: "→";
+            position: absolute;
+            left: -1.5rem;
+            color: #6366f1;
+            font-weight: bold;
+        }
+
+        .mockup-container {
+            background: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: #6b7280;
+            margin-top: 1.5rem;
+        }
+
+        .mockup-container p {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mockup-container small {
+            color: #9ca3af;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .timeline h2 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-week {
+            background: #6366f1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .timeline-content h4 {
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #6366f1;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Vanmates Automation Concept</h1>
+        <p>Visualización del Sistema Propuesto</p>
+    </div>
+
+    <div class="container">
+        <div class="demo-note">
+            <span class="icon">💡</span>
+            <div>
+                <strong>Nota:</strong> Este es un concepto visual de cómo funcionará el sistema. 
+                El desarrollo completo tomará 4 semanas para asegurar confiabilidad y manejo correcto de todos los casos.
+            </div>
+        </div>
+
+        <div class="process-flow">
+            <h2>Flujo de Automatización Propuesto</h2>
+            
+            <div class="flow-diagram">
+                <div class="system-box hubspot">
+                    HubSpot
+                    <br>
+                    <small style="font-weight: normal; font-size: 0.875rem;">Deal → Closed Won</small>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="system-box automation">
+                    Sistema de<br>Automatización
+                    <br>
+                    <small style="font-weight: normal; font-size: 0.875rem;">(Por desarrollar)</small>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="system-box quickbooks">
+                    QuickBooks
+                    <br>
+                    <small style="font-weight: normal; font-size: 0.875rem;">Invoice Creado</small>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <div class="arrow" style="display: inline-block; transform: rotate(90deg);">↓</div>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                <div class="system-box asana" style="max-width: 200px;">
+                    Asana
+                    <br>
+                    <small style="font-weight: normal; font-size: 0.875rem;">Perfil Actualizado</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-section">
+            <h3>
+                Funcionalidades Principales
+                <span class="badge">Por Desarrollar</span>
+            </h3>
+            <ul class="feature-list">
+                <li>Detección automática de deals cerrados en HubSpot</li>
+                <li>Validación de initial payment vs deposit + placement fee</li>
+                <li>Creación de recurring invoices (room + utilities + 3% card fee)</li>
+                <li>Auto-send de invoices 5 días antes del ciclo</li>
+                <li>Actualización inteligente de inventory por lease type</li>
+                <li>Sistema de validaciones pre-renewal (check arrears)</li>
+                <li>Manejo de cleaning fees con reglas de negocio</li>
+                <li>Dashboard de monitoreo y alertas en tiempo real</li>
+            </ul>
+            
+            <div class="mockup-container">
+                <p>Dashboard de Monitoreo</p>
+                <small>Interfaz por diseñar - Semana 3 del desarrollo</small>
+            </div>
+        </div>
+
+        <div class="concept-section">
+            <h3>
+                Casos de Uso Específicos
+                <span class="badge">Basado en su documentación</span>
+            </h3>
+            <ul class="feature-list">
+                <li><strong>New Booking:</strong> 
+                    <ul style="margin-top: 0.5rem; font-weight: normal;">
+                        <li>Validar initial payment matches HubSpot</li>
+                        <li>Crear recurring invoice (room + utilities + 3% fee)</li>
+                        <li>Auto-send 5 días antes del ciclo</li>
+                        <li>Actualizar inventory según lease type (Open/Fixed/Flex)</li>
+                    </ul>
+                </li>
+                <li><strong>Room Change:</strong> 
+                    <ul style="margin-top: 0.5rem; font-weight: normal;">
+                        <li>Aplicar $75 cleaning fee (con excepciones)</li>
+                        <li>Crear perfil temporal en Asana</li>
+                        <li>Actualizar recurring invoice con nuevo pricing</li>
+                        <li>Crear subtarea con fecha de cambio</li>
+                    </ul>
+                </li>
+                <li><strong>Renewals:</strong> 
+                    <ul style="margin-top: 0.5rem; font-weight: normal;">
+                        <li>Verificar NO arrears en QBO antes de proceder</li>
+                        <li>Confirmar disponibilidad en inventory</li>
+                        <li>Ajustar precio si había promoción previa</li>
+                    </ul>
+                </li>
+                <li><strong>Validaciones Automáticas:</strong>
+                    <ul style="margin-top: 0.5rem; font-weight: normal;">
+                        <li>Rooms en "pending" > 24hrs → return to inventory</li>
+                        <li>Price matching: HubSpot ↔ Inventory</li>
+                        <li>Flex leases: mínimo 3 meses</li>
+                        <li>Double booking detection → alertas</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="concept-section">
+            <h3>
+                Manejo Multi-Provincia
+                <span class="badge">BC, ON, QC</span>
+            </h3>
+            <ul class="feature-list">
+                <li>Templates automáticos según ubicación y lease type</li>
+                <li>BC OPEN/FIXED (Vancouver)</li>
+                <li>ON OPEN/FIXED (Ontario + Brampton)</li>
+                <li>QC OPEN/FIXED (Montreal)</li>
+                <li>Reglas fiscales específicas por provincia</li>
+            </ul>
+        </div>
+
+        <div class="timeline">
+            <h2>Plan de Desarrollo (4 Semanas)</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-week">Semana 1</div>
+                <div class="timeline-content">
+                    <h4>Setup + HubSpot Integration</h4>
+                    <p>Configuración inicial, webhooks, estructura base</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-week">Semana 2</div>
+                <div class="timeline-content">
+                    <h4>QuickBooks Integration</h4>
+                    <p>OAuth, creación de customers e invoices, manejo de pagos</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-week">Semana 3</div>
+                <div class="timeline-content">
+                    <h4>Asana + Dashboard</h4>
+                    <p>Sincronización de perfiles, diseño de interfaz de monitoreo</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-week">Semana 4</div>
+                <div class="timeline-content">
+                    <h4>Testing + Deployment</h4>
+                    <p>Pruebas con data real, ajustes finales, puesta en producción</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Sistema Completo de Automatización</h2>
+            <p>Diseñado específicamente para los procesos únicos de Vanmates</p>
+        </div>
+    </div>
+</body>
+</html>
